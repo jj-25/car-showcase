@@ -1,5 +1,5 @@
 import isEmpty from "lodash.isempty";
-import { HomeProps } from "@/types";
+import { CarProps, HomeProps } from "@/types";
 import { fuels, yearsOfProduction } from "@/constants";
 import { CarCard, SearchBar, CustomFilter, Hero, ShowMore } from "@/components";
 import { fetchCars } from "@/utils";
@@ -21,14 +21,13 @@ export default async function Home({ searchParams }: HomeProps) {
           <h1 className="text-4xl font-extrabold">Car Catalogue</h1>
           <p>Explore out cars you might like</p>
         </div>
-      </div>
+        <div className="home__filters">
+          <SearchBar />
 
-      <div className="home__filters">
-        <SearchBar />
-
-        <div className="home__filter-container">
-          <CustomFilter title="fuel" options={fuels} />
-          <CustomFilter title="year" options={yearsOfProduction} />
+          <div className="home__filter-container">
+            <CustomFilter title="fuel" options={fuels} />
+            <CustomFilter title="year" options={yearsOfProduction} />
+          </div>
         </div>
 
         {isEmpty(allCars) ? (
@@ -39,7 +38,7 @@ export default async function Home({ searchParams }: HomeProps) {
         ) : (
           <section>
             <div className="home__cars-wrapper">
-              {allCars?.map((car) => (
+              {allCars?.map((car: CarProps) => (
                 <CarCard car={car} />
               ))}
             </div>

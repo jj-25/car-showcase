@@ -18,14 +18,9 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
 export const updateSearchParams = (type: string, value: string) => {
   // Get the current URL search params
   const searchParams = new URLSearchParams(window.location.search);
-  console.log(
-    "🚀 ~ file: index.ts:21 ~ updateSearchParams ~ searchParams:",
-    searchParams
-  );
 
   // Set the specified search parameter to the given value
   searchParams.set(type, value);
-  console.log("🚀 ~ f", searchParams);
 
   // Set the specified search parameter to the given value
   const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
